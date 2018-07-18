@@ -30,14 +30,14 @@ public class MainApp {
         objB.getMessage2();
         objB.getMessage3();*/
 
-        /*TextEditor textEditor = (TextEditor) context.getBean("textEditor");
-        textEditor.spellChecke();*/
+        TextEditor textEditor = (TextEditor) context.getBean("textEditor");
+        textEditor.spellChecke();
 
-        JavaCollection javaCollection = (JavaCollection) context.getBean("javaCollcetion");
+        /*JavaCollection javaCollection = (JavaCollection) context.getBean("javaCollcetion");
         javaCollection.getAddressList();
         javaCollection.getAddressSet();
         javaCollection.getAddressMap();
-        javaCollection.getAddressProp();
+        javaCollection.getAddressProp();*/
 
     }
 

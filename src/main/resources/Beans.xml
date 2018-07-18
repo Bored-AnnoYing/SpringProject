@@ -23,13 +23,13 @@
         <property name="message3" value="Namaste India!"/>
     </bean>-->
 
-    <!--<bean id="textEditor" class="com.henfanren.bean.TextEditor">
-        <property name="spellChecker">
-            <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"></bean>
-        </property>
-    </bean>-->
+    <bean id="textEditor" class="com.henfanren.bean.TextEditor" autowire="byName">
+        <property name="name" value="Generic Text Edior"/>
+    </bean>
 
-    <bean id="javaCollcetion" class="com.henfanren.bean.JavaCollection">
+    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"></bean>
+
+    <!--<bean id="javaCollcetion" class="com.henfanren.bean.JavaCollection">
         <property name="addressList">
             <list>
                 <value>INDIA</value>
@@ -65,6 +65,6 @@
                 <prop key="four">USA</prop>
             </props>
         </property>
-    </bean>
+    </bean>-->
 
 </beans>
