@@ -1,8 +1,10 @@
 package com.henfanren.main;
 
 import com.henfanren.bean.HellowWorld;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @ProjectName: SpringProject
@@ -15,8 +17,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MainApp {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
-        HellowWorld hellowWorld = (HellowWorld) context.getBean("helloworld");
+        //ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
+        HellowWorld hellowWorld = (HellowWorld) factory.getBean("helloworld");
         hellowWorld.getMessage();
     }
 
