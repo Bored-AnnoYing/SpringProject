@@ -1,5 +1,9 @@
 package com.henfanren.main;
 
+import com.henfanren.bean.HellowWorld;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * @ProjectName: SpringProject
  * @ClassName: MainApp
@@ -9,4 +13,11 @@ package com.henfanren.main;
  * @Modified By:
  */
 public class MainApp {
+
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        HellowWorld hellowWorld = (HellowWorld) context.getBean("helloworld");
+        hellowWorld.getMessage();
+    }
+
 }

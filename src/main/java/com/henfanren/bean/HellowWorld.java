@@ -9,4 +9,16 @@ package com.henfanren.bean;
  * @Modified By:
  */
 public class HellowWorld {
+
+    String message;
+
+    public void setMessage(String message){
+        this.message = message;
+    }
+
+    public String getMessage(){
+        System.out.println("Your Message : " + message);
+        return this.message;
+    }
+
 }
