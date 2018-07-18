@@ -2,6 +2,7 @@ package com.henfanren.main;
 
 import com.henfanren.bean.HellowWorld;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -15,15 +16,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MainApp {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         //XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
         //ApplicationContext context = new FileSystemXmlApplicationContext("F:\\Project\\SpringProject\\src\\main\\resources\\Beans.xml");
         HellowWorld hellowWorld = (HellowWorld) context.getBean("helloworld");
-        hellowWorld.setMessage("hellowWorld----AAA");
         hellowWorld.getMessage();
 
-        HellowWorld hellowWorld1 = (HellowWorld) context.getBean("helloworld");
-        hellowWorld1.getMessage();
+        context.registerShutdownHook();
+
     }
 
 }

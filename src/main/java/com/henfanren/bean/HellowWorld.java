@@ -21,4 +21,12 @@ public class HellowWorld {
         return this.message;
     }
 
+    public void init(){
+        System.out.println("HelloWorld init");
+    }
+
+    public void destory(){
+        System.out.println("HelloWorld destory");
+    }
+
 }
