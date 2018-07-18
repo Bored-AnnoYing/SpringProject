@@ -9,4 +9,6 @@
         <property name="message" value="Hellow World!"/>
     </bean>
 
+    <bean class="com.henfanren.bean.InitHelloWorld"/>
+
 </beans>
