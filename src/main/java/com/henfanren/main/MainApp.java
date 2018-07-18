@@ -2,6 +2,7 @@ package com.henfanren.main;
 
 import com.henfanren.bean.HelloIndia;
 import com.henfanren.bean.HelloWorld;
+import com.henfanren.bean.TextEditor;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,7 +21,7 @@ public class MainApp {
         //XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
         //ApplicationContext context = new FileSystemXmlApplicationContext("F:\\Project\\SpringProject\\src\\main\\resources\\Beans.xml");
 
-        HelloWorld objA = (HelloWorld) context.getBean("helloWorld");
+        /*HelloWorld objA = (HelloWorld) context.getBean("helloWorld");
 
         objA.getMessage1();
         objA.getMessage2();
@@ -28,8 +29,10 @@ public class MainApp {
         HelloIndia objB = (HelloIndia) context.getBean("helloIndia");
         objB.getMessage1();
         objB.getMessage2();
-        objB.getMessage3();
+        objB.getMessage3();*/
 
+        TextEditor textEditor = (TextEditor) context.getBean("textEditor");
+        textEditor.spellChecke();
 
     }
 

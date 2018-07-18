@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
+    <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
         <property name="message1" value="Hellow World!"/>
     </bean>
 
@@ -13,13 +13,19 @@
         <property name="message1" value="Hello World!"/>
         <property name="message2" value="Hello Second World!"/>
         <property name="message3" value="Namaste India!"/>
-    </bean>
+    </bean>-->
 
     <!-- 后置处理器 -->
     <!--<bean class="com.henfanren.bean.InitHelloWorld"/>-->
 
-    <bean id="helloIndia" class="com.henfanren.bean.HelloIndia" parent="beanTeamplate">
+    <!--<bean id="helloIndia" class="com.henfanren.bean.HelloIndia" parent="beanTeamplate">
         <property name="message1" value="Hello India!"/>
         <property name="message3" value="Namaste India!"/>
+    </bean>-->
+
+    <bean id="textEditor" class="com.henfanren.bean.TextEditor">
+        <constructor-arg ref="spellChecker"/>
     </bean>
+
+    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"></bean>
 </beans>
