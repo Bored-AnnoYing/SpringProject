@@ -1,7 +1,5 @@
 package com.henfanren.main;
 
-import com.henfanren.bean.HelloIndia;
-import com.henfanren.bean.HelloWorld;
 import com.henfanren.bean.TextEditor;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

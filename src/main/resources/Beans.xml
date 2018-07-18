@@ -24,8 +24,9 @@
     </bean>-->
 
     <bean id="textEditor" class="com.henfanren.bean.TextEditor">
-        <constructor-arg ref="spellChecker"/>
+        <property name="spellChecker">
+            <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"></bean>
+        </property>
     </bean>
 
-    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"></bean>
 </beans>

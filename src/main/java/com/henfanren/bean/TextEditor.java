@@ -12,8 +12,8 @@ public class TextEditor {
 
     private SpellChecker spellChecker;
 
-    public TextEditor(SpellChecker spellChecker){
-        System.out.println("Inside TextEditor constructor");
+    public void setSpellChecker(SpellChecker spellChecker){
+        System.out.println("Inside setSpellChecker");
         this.spellChecker = spellChecker;
     }
 
