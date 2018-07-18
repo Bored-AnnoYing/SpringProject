@@ -1,7 +1,7 @@
 package com.henfanren.main;
 
-import com.henfanren.bean.HellowWorld;
-import org.springframework.context.ApplicationContext;
+import com.henfanren.bean.HelloIndia;
+import com.henfanren.bean.HelloWorld;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,10 +19,17 @@ public class MainApp {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         //XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
         //ApplicationContext context = new FileSystemXmlApplicationContext("F:\\Project\\SpringProject\\src\\main\\resources\\Beans.xml");
-        HellowWorld hellowWorld = (HellowWorld) context.getBean("helloworld");
-        hellowWorld.getMessage();
 
-        context.registerShutdownHook();
+        HelloWorld objA = (HelloWorld) context.getBean("helloWorld");
+
+        objA.getMessage1();
+        objA.getMessage2();
+
+        HelloIndia objB = (HelloIndia) context.getBean("helloIndia");
+        objB.getMessage1();
+        objB.getMessage2();
+        objB.getMessage3();
+
 
     }
 
