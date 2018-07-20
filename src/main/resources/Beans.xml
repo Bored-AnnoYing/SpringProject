@@ -9,7 +9,7 @@
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <context:annotation-config/>
-
+    
 
     <!-- Definition for profile bean -->
     <!--<bean id="profile" class="com.henfanren.bean.Profile">
@@ -27,9 +27,9 @@
         <property name="age"  value="2"/>
     </bean>-->
 
-    <bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
+    <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
         <property name="message" value="Hellow World!"/>
-    </bean>
+    </bean>-->
 
     <!--<bean id="beanTeamplate" abstract="true">
         <property name="message1" value="Hello World!"/>

@@ -1,11 +1,9 @@
 package com.henfanren.main;
 
 import com.henfanren.bean.HelloWorld;
-import com.henfanren.bean.Profile;
-import com.henfanren.bean.Student;
-import com.henfanren.bean.TextEditor;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.henfanren.bean.HelloWorldConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @ProjectName: SpringProject
@@ -18,9 +16,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MainApp {
 
     public static void main(String[] args) {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        //AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         //XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
         //ApplicationContext context = new FileSystemXmlApplicationContext("F:\\Project\\SpringProject\\src\\main\\resources\\Beans.xml");
+        ApplicationContext context = new AnnotationConfigApplicationContext(HelloWorldConfig.class);
 
         /*HelloWorld objA = (HelloWorld) context.getBean("helloWorld");
 
@@ -49,9 +48,13 @@ public class MainApp {
         profile.printAge();
         profile.printName();*/
 
-        HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+        /*HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
         obj.getMessage();
-        context.registerShutdownHook();
+        context.registerShutdownHook();*/
+
+        HelloWorld helloWorld = context.getBean(HelloWorld.class);
+        helloWorld.setMessage("Hello World!");
+        helloWorld.getMessage();
 
     }
 

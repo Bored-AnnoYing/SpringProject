@@ -1,8 +1,9 @@
 package com.henfanren.bean;
 
+import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 
 /**
  * @ProjectName: SpringProject
@@ -15,7 +16,6 @@ import javax.annotation.Resource;
 public class HelloWorld {
 
     private String message;
-    @Resource(name = "message")
     public void setMessage(String message){
         this.message  = message;
     }
