@@ -1,5 +1,6 @@
 package com.henfanren.main;
 
+import com.henfanren.bean.HelloWorld;
 import com.henfanren.bean.Profile;
 import com.henfanren.bean.Student;
 import com.henfanren.bean.TextEditor;
@@ -44,9 +45,13 @@ public class MainApp {
         System.out.println("Name : " + student.getName() );
         System.out.println("Age : " + student.getAge() );*/
 
-        Profile profile = (Profile) context.getBean("profile");
+        /*Profile profile = (Profile) context.getBean("profile");
         profile.printAge();
-        profile.printName();
+        profile.printName();*/
+
+        HelloWorld obj = (HelloWorld) context.getBean("helloWorld");
+        obj.getMessage();
+        context.registerShutdownHook();
 
     }
 

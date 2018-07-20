@@ -12,26 +12,26 @@
 
 
     <!-- Definition for profile bean -->
-    <bean id="profile" class="com.henfanren.bean.Profile">
-    </bean>
+    <!--<bean id="profile" class="com.henfanren.bean.Profile">
+    </bean>-->
 
     <!-- Definition for student bean -->
-    <bean id="student1" class="com.henfanren.bean.Student">
+    <!--<bean id="student1" class="com.henfanren.bean.Student">
         <property name="name"  value="Zara" />
         <property name="age"  value="11"/>
-    </bean>
+    </bean>-->
 
     <!-- Definition for student2 bean -->
-    <bean id="student2" class="com.henfanren.bean.Student">
+    <!--<bean id="student2" class="com.henfanren.bean.Student">
         <property name="name"  value="Nuha" />
         <property name="age"  value="2"/>
+    </bean>-->
+
+    <bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
+        <property name="message" value="Hellow World!"/>
     </bean>
 
-    <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
-        <property name="message1" value="Hellow World!"/>
-    </bean>
-
-    <bean id="beanTeamplate" abstract="true">
+    <!--<bean id="beanTeamplate" abstract="true">
         <property name="message1" value="Hello World!"/>
         <property name="message2" value="Hello Second World!"/>
         <property name="message3" value="Namaste India!"/>

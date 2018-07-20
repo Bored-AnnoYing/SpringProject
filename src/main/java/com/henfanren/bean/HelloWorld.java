@@ -1,5 +1,9 @@
 package com.henfanren.bean;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
+
 /**
  * @ProjectName: SpringProject
  * @ClassName: HellowWorld
@@ -10,19 +14,23 @@ package com.henfanren.bean;
  */
 public class HelloWorld {
 
-    private String message1;
-    private String message2;
-    public void setMessage1(String message){
-        this.message1  = message;
+    private String message;
+    @Resource(name = "message")
+    public void setMessage(String message){
+        this.message  = message;
     }
-    public void setMessage2(String message){
-        this.message2  = message;
+    public void getMessage(){
+        System.out.println("World Message1 : " + message);
     }
-    public void getMessage1(){
-        System.out.println("World Message1 : " + message1);
+
+    @PostConstruct
+    public void init(){
+        System.out.println("Bean is going through init.");
     }
-    public void getMessage2(){
-        System.out.println("World Message2 : " + message2);
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("Bean will destroy now.");
     }
 
 }
