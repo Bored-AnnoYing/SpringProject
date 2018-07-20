@@ -1,5 +1,6 @@
 package com.henfanren.main;
 
+import com.henfanren.bean.Profile;
 import com.henfanren.bean.Student;
 import com.henfanren.bean.TextEditor;
 import org.springframework.context.support.AbstractApplicationContext;
@@ -30,8 +31,8 @@ public class MainApp {
         objB.getMessage2();
         objB.getMessage3();*/
 
-        TextEditor textEditor = (TextEditor) context.getBean("textEditor");
-        textEditor.spellChecke();
+        /*TextEditor textEditor = (TextEditor) context.getBean("textEditor");
+        textEditor.spellChecke();*/
 
         /*JavaCollection javaCollection = (JavaCollection) context.getBean("javaCollcetion");
         javaCollection.getAddressList();
@@ -42,6 +43,10 @@ public class MainApp {
         /*Student student = (Student) context.getBean("student");
         System.out.println("Name : " + student.getName() );
         System.out.println("Age : " + student.getAge() );*/
+
+        Profile profile = (Profile) context.getBean("profile");
+        profile.printAge();
+        profile.printName();
 
     }
 

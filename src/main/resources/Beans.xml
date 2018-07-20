@@ -10,12 +10,23 @@
 
     <context:annotation-config/>
 
-    <!-- Definition for student bean -->
-    <!--<bean id="student" class="com.henfanren.bean.Student">
-        <property name="name"  value="Zara" />
 
+    <!-- Definition for profile bean -->
+    <bean id="profile" class="com.henfanren.bean.Profile">
+    </bean>
+
+    <!-- Definition for student bean -->
+    <bean id="student1" class="com.henfanren.bean.Student">
+        <property name="name"  value="Zara" />
         <property name="age"  value="11"/>
-    </bean>-->
+    </bean>
+
+    <!-- Definition for student2 bean -->
+    <bean id="student2" class="com.henfanren.bean.Student">
+        <property name="name"  value="Nuha" />
+        <property name="age"  value="2"/>
+    </bean>
+
     <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
         <property name="message1" value="Hellow World!"/>
     </bean>
@@ -34,10 +45,10 @@
         <property name="message3" value="Namaste India!"/>
     </bean>-->
 
-    <bean id="textEditor" class="com.henfanren.bean.TextEditor">
+    <!--<bean id="textEditor" class="com.henfanren.bean.TextEditor">
     </bean>
 
-    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"/>
+    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"/>-->
 
     <!--<bean id="javaCollcetion" class="com.henfanren.bean.JavaCollection">
         <property name="addressList">

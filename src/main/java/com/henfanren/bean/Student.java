@@ -16,7 +16,6 @@ public class Student {
 
     private String name;
 
-    @Required
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -24,7 +23,6 @@ public class Student {
     public Integer getAge() {
         return age;
     }
-    @Required
     public void setName(String name) {
         this.name = name;
     }
