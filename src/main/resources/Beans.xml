@@ -11,12 +11,11 @@
     <context:annotation-config/>
 
     <!-- Definition for student bean -->
-    <bean id="student" class="com.henfanren.bean.Student">
+    <!--<bean id="student" class="com.henfanren.bean.Student">
         <property name="name"  value="Zara" />
 
-        <!-- try without passing age and check the result -->
         <property name="age"  value="11"/>
-    </bean>
+    </bean>-->
     <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
         <property name="message1" value="Hellow World!"/>
     </bean>
@@ -35,11 +34,10 @@
         <property name="message3" value="Namaste India!"/>
     </bean>-->
 
-    <!--<bean id="textEditor" class="com.henfanren.bean.TextEditor" autowire="byType">
-        <property name="name" value="Generic Text Edior"/>
+    <bean id="textEditor" class="com.henfanren.bean.TextEditor">
     </bean>
 
-    <bean id="SpellChecker" class="com.henfanren.bean.SpellChecker"></bean>-->
+    <bean id="spellChecker" class="com.henfanren.bean.SpellChecker"/>
 
     <!--<bean id="javaCollcetion" class="com.henfanren.bean.JavaCollection">
         <property name="addressList">

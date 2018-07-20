@@ -1,5 +1,7 @@
 package com.henfanren.bean;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @ProjectName: SpringProject
  * @ClassName: TextEditor
@@ -10,13 +12,9 @@ package com.henfanren.bean;
  */
 public class TextEditor {
 
+    @Autowired
     private SpellChecker spellChecker;
     private String name;
-
-    public void setSpellChecker(SpellChecker spellChecker){
-        System.out.println("Inside setSpellChecker");
-        this.spellChecker = spellChecker;
-    }
 
     public SpellChecker getSpellChecker() {
         return spellChecker;
