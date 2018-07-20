@@ -1,6 +1,6 @@
 package com.henfanren.main;
 
-import com.henfanren.bean.TextEditor;
+import com.henfanren.bean.Student;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,15 +29,19 @@ public class MainApp {
         objB.getMessage2();
         objB.getMessage3();*/
 
-        TextEditor textEditor = (TextEditor) context.getBean("textEditor");
+        /*TextEditor textEditor = (TextEditor) context.getBean("textEditor");
         System.out.println(textEditor.getName());
-        textEditor.spellChecke();
+        textEditor.spellChecke();*/
 
         /*JavaCollection javaCollection = (JavaCollection) context.getBean("javaCollcetion");
         javaCollection.getAddressList();
         javaCollection.getAddressSet();
         javaCollection.getAddressMap();
         javaCollection.getAddressProp();*/
+
+        Student student = (Student) context.getBean("student");
+        System.out.println("Name : " + student.getName() );
+        System.out.println("Age : " + student.getAge() );
 
     }
 

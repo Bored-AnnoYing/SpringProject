@@ -8,6 +8,15 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+    <context:annotation-config/>
+
+    <!-- Definition for student bean -->
+    <bean id="student" class="com.henfanren.bean.Student">
+        <property name="name"  value="Zara" />
+
+        <!-- try without passing age and check the result -->
+        <property name="age"  value="11"/>
+    </bean>
     <!--<bean id="helloWorld" class="com.henfanren.bean.HelloWorld">
         <property name="message1" value="Hellow World!"/>
     </bean>
@@ -26,11 +35,11 @@
         <property name="message3" value="Namaste India!"/>
     </bean>-->
 
-    <bean id="textEditor" class="com.henfanren.bean.TextEditor" autowire="byType">
+    <!--<bean id="textEditor" class="com.henfanren.bean.TextEditor" autowire="byType">
         <property name="name" value="Generic Text Edior"/>
     </bean>
 
-    <bean id="SpellChecker" class="com.henfanren.bean.SpellChecker"></bean>
+    <bean id="SpellChecker" class="com.henfanren.bean.SpellChecker"></bean>-->
 
     <!--<bean id="javaCollcetion" class="com.henfanren.bean.JavaCollection">
         <property name="addressList">
