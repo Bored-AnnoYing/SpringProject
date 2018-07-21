@@ -2,8 +2,11 @@ package com.henfanren.main;
 
 import com.henfanren.bean.HelloWorld;
 import com.henfanren.bean.HelloWorldConfig;
+import com.henfanren.bean.Student;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @ProjectName: SpringProject
@@ -16,10 +19,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class MainApp {
 
     public static void main(String[] args) {
-        //AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         //XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
         //ApplicationContext context = new FileSystemXmlApplicationContext("F:\\Project\\SpringProject\\src\\main\\resources\\Beans.xml");
-        ApplicationContext context = new AnnotationConfigApplicationContext(HelloWorldConfig.class);
+        //ApplicationContext context = new AnnotationConfigApplicationContext(HelloWorldConfig.class);
 
         /*HelloWorld objA = (HelloWorld) context.getBean("helloWorld");
 
@@ -40,9 +43,11 @@ public class MainApp {
         javaCollection.getAddressMap();
         javaCollection.getAddressProp();*/
 
-        /*Student student = (Student) context.getBean("student");
+        Student student = (Student) context.getBean("student");
         System.out.println("Name : " + student.getName() );
-        System.out.println("Age : " + student.getAge() );*/
+        System.out.println("Age : " + student.getAge() );
+
+        student.printThrowException();
 
         /*Profile profile = (Profile) context.getBean("profile");
         profile.printAge();
@@ -52,9 +57,9 @@ public class MainApp {
         obj.getMessage();
         context.registerShutdownHook();*/
 
-        HelloWorld helloWorld = context.getBean(HelloWorld.class);
+        /*HelloWorld helloWorld = context.getBean(HelloWorld.class);
         helloWorld.setMessage("Hello World!");
-        helloWorld.getMessage();
+        helloWorld.getMessage();*/
 
     }
 
