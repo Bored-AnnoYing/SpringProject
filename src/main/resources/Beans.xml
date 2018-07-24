@@ -9,8 +9,9 @@
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
     <!--<context:annotation-config/>-->
+    <aop:aspectj-autoproxy/>
 
-    <aop:config>
+    <!--<aop:config>
         <aop:aspect id="log" ref="logging">
             <aop:pointcut id="selectAll" expression="execution(* com.henfanren.bean.*.*(..))"/>
             <aop:before method="beforeAdvice" pointcut-ref="selectAll"/>
@@ -18,7 +19,7 @@
             <aop:after-returning method="afterReturningAdvice" pointcut-ref="selectAll" returning="retVal"/>
             <aop:after-throwing method="AfterThrowingAdvice" pointcut-ref="selectAll" throwing="ex"/>
         </aop:aspect>
-    </aop:config>
+    </aop:config>-->
 
     <!-- Definition for profile bean -->
     <!--<bean id="profile" class="com.henfanren.bean.Profile">
