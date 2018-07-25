@@ -4,10 +4,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -22,12 +25,22 @@
 
     <bean id="studentDAOImpl" class="com.henfanren.dao.StudentDAOImpl">
         <property name="dataSource" ref="dataSource"/>
-        <property name="transactionManager" ref="transactionManager"/>
     </bean>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="create"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="createOperation" expression="execution(* com.henfanren.dao.StudentDAOImpl.create(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="createOperation"/>
+    </aop:config>
     <!--<aop:config>
         <aop:aspect id="log" ref="logging">
             <aop:pointcut id="selectAll" expression="execution(* com.henfanren.bean.*.*(..))"/>

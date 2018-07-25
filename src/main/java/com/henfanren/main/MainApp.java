@@ -2,6 +2,7 @@ package com.henfanren.main;
 
 import com.henfanren.bean.Student;
 import com.henfanren.bean.StudentMarks;
+import com.henfanren.dao.StudentDAO;
 import com.henfanren.dao.StudentDAOImpl;
 import com.henfanren.util.DataBaseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class MainApp {
         System.out.println("Name : " + student.getName() );
         System.out.println("Age : " + student.getAge() );*/
 
-        StudentDAOImpl studentDAO = (StudentDAOImpl) context.getBean("studentDAOImpl");
+        StudentDAO studentDAO = (StudentDAO) context.getBean("studentDAOImpl");
         System.out.println("------Records Creation--------" );
         studentDAO.create("Zara", 11, 99, 2010);
         studentDAO.create("Nuha", 20, 97, 2010);

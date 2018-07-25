@@ -24,40 +24,29 @@ import java.util.List;
  */
 public class StudentDAOImpl implements StudentDAO {
 
-    private DataSource dataSource;
     private JdbcTemplate jdbcTemplateObject;
-    private PlatformTransactionManager transactionManager;
-
-    public void setTransactionManager(PlatformTransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
-    }
 
     @Override
     public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
     @Override
     public void create(String name, Integer age, Integer marks, Integer year) {
-        TransactionDefinition definition = new DefaultTransactionDefinition();
-        TransactionStatus status = transactionManager.getTransaction(definition);
         try {
             String sql1 = "insert into Student (name, age) values (?, ?)";
             jdbcTemplateObject.update( sql1, name, age);
-
             // Get the latest student id to be used in Marks table
             String sql2 = "select max(id) from Student";
             int sid = jdbcTemplateObject.queryForInt( sql2 );
-
             String sql3 = "insert into Marks(sid, marks, year) " +
                     "values (?, ?, ?)";
             jdbcTemplateObject.update( sql3, sid, marks, year);
             System.out.println("Created Name = " + name + ", Age = " + age);
-            transactionManager.commit(status);
+            // to simulate the exception.
+            throw new RuntimeException("simulate Error condition") ;
         } catch (DataAccessException e) {
             System.out.println("Error in creating record, rolling back");
-            transactionManager.rollback(status);
             throw e;
         }
     }
