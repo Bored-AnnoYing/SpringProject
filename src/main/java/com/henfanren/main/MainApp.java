@@ -1,12 +1,13 @@
 package com.henfanren.main;
 
-import com.henfanren.bean.HelloWorld;
-import com.henfanren.bean.HelloWorldConfig;
 import com.henfanren.bean.Student;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.henfanren.dao.StudentDAOImpl;
+import com.henfanren.util.DataBaseUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 /**
  * @ProjectName: SpringProject
@@ -17,6 +18,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @Modified By:
  */
 public class MainApp {
+
+    /*@Autowired
+    private static DataBaseUtil dataBaseUtil;*/
 
     public static void main(String[] args) {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
@@ -43,11 +47,34 @@ public class MainApp {
         javaCollection.getAddressMap();
         javaCollection.getAddressProp();*/
 
-        Student student = (Student) context.getBean("student");
+        /*Student student = (Student) context.getBean("student");
         System.out.println("Name : " + student.getName() );
-        System.out.println("Age : " + student.getAge() );
+        System.out.println("Age : " + student.getAge() );*/
 
-        student.printThrowException();
+        StudentDAOImpl studentDAO = (StudentDAOImpl) context.getBean("studentDAOImpl");
+        System.out.println("------Records Creation--------" );
+        studentDAO.create("Zara", 11);
+        studentDAO.create("Nuha", 2);
+        studentDAO.create("Ayan", 5);
+
+        List<Student> students = studentDAO.listStudents();
+        System.out.println("------Listing Multiple Records--------" );
+        for (Student record : students) {
+            System.out.print("ID : " + record.getId() );
+            System.out.print(", Name : " + record.getName() );
+            System.out.println(", Age : " + record.getAge());
+        }
+
+        System.out.println("----Updating Record with ID = 2 -----" );
+        studentDAO.update(2, 20);
+
+        System.out.println("----Listing Record with ID = 2 -----" );
+        Student student = studentDAO.getStudent(1);
+        System.out.print("ID : " + student.getId() );
+        System.out.print(", Name : " + student.getName() );
+        System.out.println(", Age : " + student.getAge());
+
+        //student.printThrowException();
 
         /*Profile profile = (Profile) context.getBean("profile");
         profile.printAge();

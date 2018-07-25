@@ -16,6 +16,8 @@ public class Student {
 
     private String name;
 
+    private Integer id;
+
     public void setAge(Integer age) {
         this.age = age;
     }
@@ -32,9 +34,11 @@ public class Student {
         return name;
     }
 
-    public void printThrowException(){
-        System.out.println("Exception raised");
-        throw new IllegalArgumentException();
+    public Integer getId() {
+        return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

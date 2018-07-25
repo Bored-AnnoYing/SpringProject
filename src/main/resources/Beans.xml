@@ -3,14 +3,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--<context:annotation-config/>-->
-    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <!--<aop:aspectj-autoproxy/>-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="rootadmin"/>
+    </bean>
 
+    <bean id="studentDAOImpl" class="com.henfanren.dao.StudentDAOImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <!--<aop:config>
         <aop:aspect id="log" ref="logging">
             <aop:pointcut id="selectAll" expression="execution(* com.henfanren.bean.*.*(..))"/>
@@ -26,12 +38,12 @@
     </bean>-->
 
     <!-- Definition for student bean -->
-    <bean id="student" class="com.henfanren.bean.Student">
+    <!--<bean id="student" class="com.henfanren.bean.Student">
         <property name="name"  value="Zara" />
         <property name="age"  value="11"/>
     </bean>
 
-    <bean id="logging" class="com.henfanren.bean.Logging"/>
+    <bean id="logging" class="com.henfanren.bean.Logging"/>-->
 
     <!-- Definition for student2 bean -->
     <!--<bean id="student2" class="com.henfanren.bean.Student">
