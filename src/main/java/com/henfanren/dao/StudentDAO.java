@@ -1,6 +1,7 @@
 package com.henfanren.dao;
 
 import com.henfanren.bean.Student;
+import com.henfanren.bean.StudentMarks;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -15,7 +16,7 @@ public interface StudentDAO {
      * This is the method to be used to create
      * a record in the Student table.
      */
-    void create(String name, Integer age);
+    void create(String name, Integer age, Integer marks, Integer year);
     /**
      * This is the method to be used to list down
      * a record from the Student table corresponding
@@ -26,7 +27,7 @@ public interface StudentDAO {
      * This is the method to be used to list down
      * all the records from the Student table.
      */
-    List<Student> listStudents();
+    List<StudentMarks> listStudents();
     /**
      * This is the method to be used to delete
      * a record from the Student table corresponding

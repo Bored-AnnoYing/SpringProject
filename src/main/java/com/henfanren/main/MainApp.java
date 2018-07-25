@@ -1,6 +1,7 @@
 package com.henfanren.main;
 
 import com.henfanren.bean.Student;
+import com.henfanren.bean.StudentMarks;
 import com.henfanren.dao.StudentDAOImpl;
 import com.henfanren.util.DataBaseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,26 +54,28 @@ public class MainApp {
 
         StudentDAOImpl studentDAO = (StudentDAOImpl) context.getBean("studentDAOImpl");
         System.out.println("------Records Creation--------" );
-        studentDAO.create("Zara", 11);
-        studentDAO.create("Nuha", 2);
-        studentDAO.create("Ayan", 5);
+        studentDAO.create("Zara", 11, 99, 2010);
+        studentDAO.create("Nuha", 20, 97, 2010);
+        studentDAO.create("Ayan", 25, 100, 2011);
 
-        List<Student> students = studentDAO.listStudents();
-        System.out.println("------Listing Multiple Records--------" );
-        for (Student record : students) {
+        System.out.println("------Listing all the records--------" );
+        List<StudentMarks> studentMarks = studentDAO.listStudents();
+        for (StudentMarks record : studentMarks) {
             System.out.print("ID : " + record.getId() );
             System.out.print(", Name : " + record.getName() );
+            System.out.print(", Marks : " + record.getMarks());
+            System.out.print(", Year : " + record.getYear());
             System.out.println(", Age : " + record.getAge());
         }
 
-        System.out.println("----Updating Record with ID = 2 -----" );
+        /*System.out.println("----Updating Record with ID = 2 -----" );
         studentDAO.update(2, 20);
 
         System.out.println("----Listing Record with ID = 2 -----" );
         Student student = studentDAO.getStudent(1);
         System.out.print("ID : " + student.getId() );
         System.out.print(", Name : " + student.getName() );
-        System.out.println(", Age : " + student.getAge());
+        System.out.println(", Age : " + student.getAge());*/
 
         //student.printThrowException();
 

@@ -22,6 +22,11 @@
 
     <bean id="studentDAOImpl" class="com.henfanren.dao.StudentDAOImpl">
         <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--<aop:config>
         <aop:aspect id="log" ref="logging">

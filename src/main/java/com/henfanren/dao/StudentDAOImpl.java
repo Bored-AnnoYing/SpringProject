@@ -1,8 +1,15 @@
 package com.henfanren.dao;
 
 import com.henfanren.bean.Student;
+import com.henfanren.bean.StudentMarks;
 import com.henfanren.mapper.StudentMapper;
+import com.henfanren.mapper.StudentMarksMapper;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -19,6 +26,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     private DataSource dataSource;
     private JdbcTemplate jdbcTemplateObject;
+    private PlatformTransactionManager transactionManager;
+
+    public void setTransactionManager(PlatformTransactionManager transactionManager) {
+        this.transactionManager = transactionManager;
+    }
 
     @Override
     public void setDataSource(DataSource dataSource) {
@@ -27,10 +39,27 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public void create(String name, Integer age) {
-        String sql = "INSERT INTO student (name, age) VALUES(?, ?)";
-        int update = jdbcTemplateObject.update(sql, name, age);
-        System.out.println(update + " insert success");
+    public void create(String name, Integer age, Integer marks, Integer year) {
+        TransactionDefinition definition = new DefaultTransactionDefinition();
+        TransactionStatus status = transactionManager.getTransaction(definition);
+        try {
+            String sql1 = "insert into Student (name, age) values (?, ?)";
+            jdbcTemplateObject.update( sql1, name, age);
+
+            // Get the latest student id to be used in Marks table
+            String sql2 = "select max(id) from Student";
+            int sid = jdbcTemplateObject.queryForInt( sql2 );
+
+            String sql3 = "insert into Marks(sid, marks, year) " +
+                    "values (?, ?, ?)";
+            jdbcTemplateObject.update( sql3, sid, marks, year);
+            System.out.println("Created Name = " + name + ", Age = " + age);
+            transactionManager.commit(status);
+        } catch (DataAccessException e) {
+            System.out.println("Error in creating record, rolling back");
+            transactionManager.rollback(status);
+            throw e;
+        }
     }
 
     @Override
@@ -41,10 +70,11 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public List<Student> listStudents() {
-        String sql = "select * from Student";
-        List <Student> students = jdbcTemplateObject.query(sql, new StudentMapper());
-        return students;
+    public List<StudentMarks> listStudents() {
+        String sql = "select * from Student, Marks where Student.id=Marks.sid";
+        List <StudentMarks> studentMarks = jdbcTemplateObject.query(sql,
+                new StudentMarksMapper());
+        return studentMarks;
     }
 
     @Override
